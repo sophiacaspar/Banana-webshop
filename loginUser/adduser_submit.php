@@ -2,6 +2,10 @@
 /*** begin our session ***/
 session_start();
 
+
+$errorMsg = $_SESSION['errors'];
+
+
 /*** first check that both the username, password and form token have been sent ***/
 if(!isset( $_POST['userName'], $_POST['password'], $_POST['form_token']))
 {
@@ -39,10 +43,20 @@ else
     /*** if we are here the data is valid and we can insert it into database ***/
     $userName = filter_var($_POST['userName'], FILTER_SANITIZE_STRING);
     $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+    $firstName = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
+    $lastName = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
+    $address = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
+    $postalCode = filter_var($_POST['postalCode'], FILTER_SANITIZE_STRING);
+    $city = filter_var($_POST['city'], FILTER_SANITIZE_STRING);
+    $country = filter_var($_POST['country'], FILTER_SANITIZE_STRING);
+    $mail = filter_var($_POST['mail'], FILTER_SANITIZE_STRING);
+    $tfnNr = filter_var($_POST['tfnNr'], FILTER_SANITIZE_STRING);
+
+    
 
     /*** now we can encrypt the password ***/
     $password = sha1( $password );
-    
+
     /*** connect to database ***/
     /*** mysql hostname ***/
     $mysql_hostname = 'utbweb.its.ltu.se';
@@ -56,35 +70,44 @@ else
     /*** database name ***/
     $mysql_dbname = 'angbru0db';
 
+    $_SESSION['errors']["userName"] = "Username something";
+
     try
     {
 
-	$link = mysql_connect("utbweb.its.ltu.se", "angbru-0", "sopcas-1");
-	mysql_select_db("angbru0db", $link);
+    $link = mysql_connect("utbweb.its.ltu.se", "angbru-0", "sopcas-1");
+    mysql_select_db("angbru0db", $link);
 
-	$loginId = 5;
+    $insertData = "INSERT INTO USER (userName, password, firstName, lastName, address, postalCode, city, country, mail, tfnNr) VALUES ('{$userName}', '{$password}', '{$firstName}', '{$lastName}', '{$address}', '{$postalCode}', '{$city}', '{$country}', '{$mail}', '{$tfnNr}')";
 
-	$insertData = "INSERT INTO LOGIN (loginId, userName, password ) VALUES ($loginId, $userName, $password )";
 
-	$result = mysql_query("SELECT loginId FROM LOGIN", $link);
-	$num_rows = mysql_num_rows($result);
-	
+    if (!$link) {
+            die("Connection failed: " . mysqli_connect_error());
+    } else {
+        $result = mysql_query($insertData, $link); 
 
-	if (!$link) {
-    		die("Connection failed: " . mysqli_connect_error());
-	} else {
-		$result = mysql_query("INSERT INTO LOGIN (loginId, userName, password ) VALUES ($num_rows, '{$userName}', '{$password}')", $link); 
+        $message = 'New user added';
+    }
+    
+    $errorcode = mysql_errno();
+    if (mysql_errno() == 1062){
+        $message = "Username already exists (if statement)";
+        $_SESSION['errors']["userName"] = "Username already exists";
+    } else {
+        $message = "Not duplicated";
+        $_SESSION['errors']["userName"] = "Username OK";
+    }
+    /***$message = $errorcode;***/
 
-		$message = 'New user added';
-	}
-	  
+    
+        
     }
     catch(Exception $e)
     {
         /*** check if the username already exists ***/
-        if( $e->getCode() == 23000)
+        if( $e->getCode() == 1062)
         {
-            $message = 'Username already exists ';
+            $message = 'Username already exists (exception cast)';
         }
         else
         {
@@ -95,6 +118,10 @@ else
 }
 ?>
 
-<p><?php echo $message; ?>
-<li><a href="../index.php">Return to userpage</a></li>
+<script type="text/javascript">
+window.setTimeout('history.back();', 1000); // waits 5 seconds before going back
+</script>
 
+<p><?php 
+echo $_SESSION['errors']["userName"];
+?>

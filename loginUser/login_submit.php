@@ -1,10 +1,10 @@
 <?php
 
 /*** begin our session ***/
-session_start("login");
+session_start();
 
 /*** check if the users is already logged in ***/
-if(isset( $_SESSION['loginId'] ))
+if(isset( $_SESSION['userId'] ))
 {
     $message = 'Users is already logged in';
 }
@@ -63,17 +63,17 @@ else
 	$link = mysql_connect("utbweb.its.ltu.se", "angbru-0", "sopcas-1");
 	mysql_select_db("angbru0db", $link);
 
-	$result = mysql_query("SELECT loginId, userName, password FROM LOGIN 
+	$result = mysql_query("SELECT userId, userName, password FROM LOGIN 
                     WHERE userName = '{$userName}' AND password = '{$password}'", $link);
 	
 
 	$row = mysql_fetch_array($result);
-  	$loginId = $row["loginId"];
+  	$loginId = $row["userId"];
 	
 
 
         /*** if we have no result then fail boat ***/
-        if($loginId == false)
+        if($userId == false)
         {
                 $message = 'Login Failed';
         }
@@ -81,7 +81,7 @@ else
         else
         {
                 /*** set the session user_id variable ***/
-                $_SESSION['loginId'] = $loginId;
+                $_SESSION['userId'] = $userId;
 
                 /*** tell the user we are logged in ***/
                 $message = 'You are now logged in';
@@ -96,7 +96,6 @@ else
     }
 }
 ?>
-
 
 <p><?php echo $message; ?>
     <ul id="menu">
