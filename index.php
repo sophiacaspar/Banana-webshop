@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Banana4U</title>
     </head>
 
 <body>
@@ -26,6 +27,7 @@
         else if(isset($_GET['p']) && $_GET['p']=='user') include('loginUser/noLogin.php');
         else if(isset($_GET['p']) && $_GET['p']=='login') include('loginUser/login.php');
         else if(isset($_GET['p']) && $_GET['p']=='newuser') include('loginUser/adduser.php');
+        else if(isset($_GET['p']) && $_GET['p']=='login_submit') include('loginUser/login_submit.php');
         else include ('siteLayout/content/bananas.php');
         ?>
     </div>
