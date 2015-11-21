@@ -1,0 +1,113 @@
+<style>
+
+ul#menu {
+}
+
+ul#menu li {
+    display:inline-block;
+}
+
+ul#menu li a {
+    color:white;
+    padding:10px 20px;
+    background-color:black;
+    text-align:center;
+    text-decoration:none;
+    border-radius:4px 4px 4px 4px;
+}
+
+ul#menu li a:hover {
+    background-color:orange;
+}
+
+
+.wrapper {
+    background-color: white;
+    padding:20px 10px;
+    width: 800px;
+    height: 100%;
+    margin-left:auto;
+    margin-right:auto;
+    top: 0px;
+}
+
+.header {
+    top: 0px;
+    left: inherit;
+    height: 100%;
+    width: 100%;
+}
+
+.menu {
+	left: inherit;
+    padding:2px;
+	top: 0px;
+	height: 100%;
+	width: inherit;
+    background-color:black;
+}
+
+.content {
+    left: inherit;
+    padding-top: 10px;
+    padding-bottom: 50px;
+    width: inherit;
+    background-color:whitesmoke;
+}
+
+.bottom {
+    left: inherit;
+    text-align:center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: inherit;
+    color:white;
+    background-color:black;
+
+}
+
+.imgbox {
+    display:inline-block;
+    text-align:center;
+    width:250px;
+    height:270px;
+    border:1px solid lightgray;
+    padding:10px;
+    background-color:white;
+    color:black;
+    margin-left: 3%;
+    margin-right: 3%;
+
+
+}
+.thumbnail {
+    padding:15px;
+    width:200px;
+    height:150px;
+    margin: 3px;
+}
+.box {
+    width:110px;
+    padding:10px;
+    color:white;
+    background-color:black;
+}
+.box:hover {
+    background-color:orange;
+}
+ 
+.button {
+    width:100px;
+    height: 40px;
+    padding:10px;
+    color:white;
+    background-color:black;
+    font-size: 15px;
+    border-radius:4px 4px 4px 4px;
+}
+.button:hover {
+    background-color:orange;
+}
+
+    
+</style>

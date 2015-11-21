@@ -1,0 +1,70 @@
+
+<!-- Tag number 1 -->
+<html>
+	<!-- Tag number 2 -->
+	<head>
+		<!-- Tag number 3 -->
+		<title> Bananas</title>
+	</head>
+	<!-- Tag number 4 -->
+	<body>
+		
+		<!-- Tag number 9 -->
+		<center>
+		<!-- Tag number 5 -->
+		<h1> Banana4U^ </h1>
+		<!-- Insert the LTU logo and hyperlink it to the source -->
+		<!-- Tag number 15 -->
+		<a href="https://media.giphy.com/media/OcDUH79ugAH1S/giphy.gif" target=_blank name="B-cat">
+		<!-- Tag number 20 -->
+		<img src="http://www.bbcgoodfood.com/sites/default/files/glossary/banana-crop.jpg" alt="banana"><br>
+		</a>
+		</center>
+		<br>
+		
+
+
+
+<h2>Login Here</h2>
+<form action="login_submit.php" method="post">
+<fieldset>
+<p>
+<label for="userName">Username</label>
+<input type="text" id="userName" name="userName" value="" maxlength="20" />
+</p>
+<p>
+<label for="password">Password</label>
+<input type="text" id="password" name="password" value="" maxlength="20" />
+</p>
+<p>
+<input type="submit" value="→ Login" />
+</p>
+</fieldset>
+</form>
+
+
+
+<!--	OLD PHP FETCH COMMANDS
+
+		<?php
+		$link = mysql_connect("utbweb.its.ltu.se", "angbru-0", "sopcas-1");
+		mysql_select_db("angbru0db", $link);
+
+		$result = mysql_query("SELECT * FROM Test_Table", $link);
+		$num_rows = mysql_num_rows($result);
+
+		//$row = mysql_fetch_assoc($result);
+		echo "$num_rows Rows in the table<br>";
+
+
+
+		for ($i=0; $i<mysql_num_rows($result); $i++) {
+			$row = mysql_fetch_assoc($result);
+			echo "id: " .$row["idTest_Table"]. " - Name: " .$row["Name"]. ", " .$row["Age"]. ", " .$row["Group"]. "<br>";
+		}		
+
+		?>
+-->
+		
+	</body>
+</html>
