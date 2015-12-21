@@ -66,11 +66,19 @@ ul#menu li a:hover {
 
 }
 
+.cart {
+	float:right;
+	width: 300px;
+	color:white;
+	background-color:black;
+	padding:5px
+}
+
 .imgbox {
     display:inline-block;
     text-align:center;
     width:250px;
-    height:270px;
+    height:100%;
     border:1px solid lightgray;
     padding:10px;
     background-color:white;
@@ -97,7 +105,7 @@ ul#menu li a:hover {
 }
  
 .button {
-    width:100px;
+    width:120px;
     height: 40px;
     padding:10px;
     color:white;
@@ -105,9 +113,43 @@ ul#menu li a:hover {
     font-size: 15px;
     border-radius:4px 4px 4px 4px;
 }
+
+.changeCart {
+    width:25px;
+    height: 25px;
+    color:white;
+    background-color:black;
+    font-size: 15px;
+    border-radius:4px 4px 4px 4px;
+}
+
+.removeFromCart {
+    width:100px;
+    height: 25px;
+    color:white;
+    background-color:black;
+    font-size: 15px;
+    border-radius:4px 4px 4px 4px;
+}
+
+
 .button:hover {
     background-color:orange;
 }
+
+.rateFill {
+	width:30px;
+	height:30px;	
+}
+
+.rateTotal {
+	width:30px;
+	height:30px;
+	opacity:0.4;
+	filter: alpha(opacity=40);
+}
+
+
 
     
 </style>

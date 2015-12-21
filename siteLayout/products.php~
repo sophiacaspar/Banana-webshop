@@ -1,0 +1,53 @@
+<?php
+include 'cart/db_connect.php';
+$sql = "SELECT * FROM PRODUCT ORDER BY productId";
+$result = mysql_query($sql, $link) or die(mysql_error());
+
+?>
+
+<?php /***
+
+<p>POPULAR BANANAS
+        <p>   <div class="imgbox" id="imgbox1"><?php echo mysql_result($result,0,'name')?><br>
+		<?php echo mysql_result($result,0,'description')?><br>
+            <img class="thumbnail" src="bananaImages/yellowbanana.png" width="107" height="90" alt="Yellow"><br>
+        
+            <?php echo mysql_result($result,0,'price')?> €<br>
+            <input class="box" type="button" value="BUY">
+            </div>
+    
+        <div class="imgbox" id="imgbox2"><?php echo mysql_result($result,1,'name')?><br>
+	<?php echo mysql_result($result,1,'description')?><br>
+      <img class="thumbnail" src="bananaImages/pinkbanana.png" width="107" height="90" alt="Pink"><br>
+        
+        <!-- CONNECT TO DATABASE (PRICE) -->
+        <?php echo mysql_result($result,1,'price')?> €<br>
+      <input class="box"  type="button" value="BUY">
+    </div>
+
+       
+<!---------------------------------------------->
+    <p>     
+    <div class="imgbox" id="imgbox1"><?php echo mysql_result($result,2,'name')?><br>
+	<?php echo mysql_result($result,2,'description')?><br>
+        <img class="thumbnail" src="bananaImages/greenbanana.png" width="50" height="90" alt="Green"><br>
+        
+        <!-- CONNECT TO DATABASE (PRICE) -->
+        <?php echo mysql_result($result,2,'price')?> €<br>
+        <input class="box" type="button" value="BUY">
+        </div>
+    
+    <div class="imgbox" id="imgbox2"><?php echo mysql_result($result,3,'name')?><br>
+	<?php echo mysql_result($result,3,'description')?><br>
+      <img class="thumbnail" src="bananaImages/bananapeal.jpg" width="107" height="90" alt="Eaten"><br>
+        
+        <!-- CONNECT TO DATABASE (PRICE) -->
+        <?php echo mysql_result($result,3,'price')?> €<br>
+      <input class="box"  type="button" value="BUY">
+    </div>
+    </p>
+
+ ***/
+?>
+
+<!--http://phppot.com/php/simple-php-shopping-cart/-->

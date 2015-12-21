@@ -45,8 +45,7 @@ for($i = 0; $i < $maxIndex; $i++){
 	
 	</form><br>
 
-
-	<?php /** VIEW RATES **/
+	<?php
 	$avgRate = avgRating(mysql_result($result,$i,'productId'));
 	$roundRate = round($avgRate, 0, PHP_ROUND_HALF_UP);
 	$maxRate = 5;

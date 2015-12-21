@@ -1,9 +1,11 @@
 <?php 
  ?>
 <h2>Login</h2>
+<!--<form action="loginUser/login_submit.php" method="post">-->
 <form action="?p=login_submit" method="post">
 <fieldset>
 <p>
+<!--<label for="userName">Username</label>-->
 <table>
 	<tr>
 	<td></td><td> <?php errorMsg(); ?> </td>
@@ -13,6 +15,7 @@
 		<td><input type="text" id="userName" name="userName" value="" maxlength="20" /></td>
 	</tr>
 	<tr>
+<!--<label for="password">Password</label>-->
 <td>Password</td>
 <td><input type="password" id="password" name="password" value="" maxlength="20" /></td>
 </tr>

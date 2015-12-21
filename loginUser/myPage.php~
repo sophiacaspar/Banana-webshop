@@ -1,10 +1,15 @@
 <?php
 
+/*** begin our session ***/
+
+
+
 /*** set a form token ***/
 $form_token = md5( uniqid('auth', true) );
 
 /*** set the session form token ***/
 $_SESSION['form_token'] = $form_token;
+
 ?>
 
 <head>
@@ -156,72 +161,62 @@ $(document).ready(function() {
 	});
 	}
 });
-
 </script>
+
 
 </head>
 
-<h2>Add user</h2>
-<form action="?p=adduser_submit" method="post">
+<h2>My page</h2>
+<form action="?p=update_submit" method="post">
 <fieldset>
-
 <table>
 <tr>
 <td><label for="userName">Username</label></td> 
-<td><input type="text" id="userName" name="userName" value="" maxlength="20" /> </td>
-<td><span id="user-result">  </span></td>
+<td><?php echo $_SESSION['userName']; ?><input type="hidden" id="userName" name="userName" value="<?php echo $_SESSION['userName'] ?>" maxlength="20" /> </td><td><span id="user-result">  </span>
 </tr>
 <tr>
 <td><label for="password">Password</label></td> 
-<td><input type="password" id="password" name="password" value="" maxlength="20" /></td>
-<td><span id="password-result">  </span></td>
+<td><input type="password" id="password" name="password" value="<?php echo $_SESSION['password'] ?>" maxlength="20" size="20" /></td><td><span id="password-result">  </span></td>
 </tr>
 <tr>
 <td><label for="firstName">First name</label> </td> 
-<td><input type="text" id="firstName" name="firstName" value="" maxlength="20" /></td>
-<td><span id="first-result">  </span></td>
+<td><input type="text" id="firstName" name="firstName" value="<?php echo $_SESSION['firstName'] ?>" maxlength="20" /></tr>
 </tr>
 <tr>
 <td><label for="lastName">Last name</label></td> 
-<td><input type="text" id="lastName" name="lastName" value="" maxlength="20" /></td>
-<td><span id="last-result">  </span></td>
+<td><input type="text" id="lastName" name="lastName" value="<?php echo $_SESSION['lastName'] ?>" maxlength="20" /></tr>
 </tr>
 <tr>
 <td><label for="address">Address</label></td> 
-<td><input type="text" id="address" name="address" value="" maxlength="20" /></td>
-<td><span id="address-result">  </span></td>
+<td><input type="text" id="address" name="address" value="<?php echo $_SESSION['address'] ?>" maxlength="20" /></tr>
 </tr>
 <tr>
 <td><label for="postalCode">Postal code</label></td> 
-<td><input type="text" id="postalCode" name="postalCode" value="" maxlength="20" /></td>
-<td><span id="postal-result">  </span></td>
+<td><input type="text" id="postalCode" name="postalCode" value="<?php echo $_SESSION['postalCode'] ?>" maxlength="20" /></tr>
 </tr>
 <tr>
 <td><label for="city">City</label></td> 
-<td><input type="text" id="city" name="city" value="" maxlength="20" /></td>
-<td><span id="city-result">  </span></td>
+<td><input type="text" id="city" name="city" value="<?php echo $_SESSION['city'] ?>" maxlength="20" /></tr>
 </tr>
 <tr>
 <td><label for="country">Country</label></td> 
-<td><input type="text" id="country" name="country" value="" maxlength="20" /></td>
-<td><span id="country-result">  </span></td>
+<td><input type="text" id="country" name="country" value="<?php echo $_SESSION['country'] ?>" maxlength="20" /></tr>
 </tr>
 <tr>
 <td><label for="mail">Mail</label></td> 
-<td><input type="text" id="mail" name="mail" value="" maxlength="40" /></td>
-<td><span id="mail-result">  </span></td>
+<td><input type="text" id="mail" name="mail" value="<?php echo $_SESSION['mail'] ?>" maxlength="40" /></tr>
 </tr>
 <tr>
 <td><label for="tfnNr">Phone number</label></td> 
-<td><input type="text" id="tfnNr" name="tfnNr" value="" maxlength="20" /></td>
-<td><span id="tfn-result">  </span></td>
+<td><input type="text" id="tfnNr" name="tfnNr" value="<?php echo $_SESSION['tfnNr'] ?>" maxlength="20" /></tr>
 </tr>
+<td></td><td> <?php errorMsg() ?> </td>
 <tr>
 <td>
+<p align="right">  </p> 
 </td><td>
-<!--- <input type="hidden" name="form_token" value="<?php echo $form_token; ?>" /> --->
-<input class="button" type="submit" value="&rarr; Add user" />
-</td>
+<input class="button" type="submit" value="&rarr; Update info" />
+<td>
 </tr>
 </table>
 
@@ -229,5 +224,9 @@ $(document).ready(function() {
 ?>
 
 </fieldset>
+<br>
+</form>
+<form action="?p=order_history" method="post"> 
+<input class="button" type="submit" value="Order History" />
 </form>
 

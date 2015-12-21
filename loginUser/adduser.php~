@@ -1,5 +1,7 @@
 <?php
 
+//include 'db_connect.php';
+
 /*** set a form token ***/
 $form_token = md5( uniqid('auth', true) );
 

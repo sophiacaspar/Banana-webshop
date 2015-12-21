@@ -24,7 +24,7 @@ $nr = mysql_fetch_row($nrCart);
 	<?php }
 
 		if(isAdmin()){ ?>
-			<li><a href="?p=admin">[Admin]</a></li>	
+			<li><a href="?p=admin"><i>[Admin]</i></a></li>	
 	<?php } 
 	?>
 	    </ul> 
