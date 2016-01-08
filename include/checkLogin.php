@@ -4,7 +4,7 @@ function isLoggedIn() {
 }
 
 function isAdmin() {
-	return isset($_SESSION['userId']) && $_SESSION['userType'] ==2;
+	return isset($_SESSION['userId']) && ($_SESSION['userType'] ==2);
 }
 
 ?> 

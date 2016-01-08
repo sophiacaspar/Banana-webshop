@@ -4,12 +4,11 @@ include 'db_connect.php';
 include 'include/checkLogin.php';
 include 'include/stringToAscii.php';
 include 'include/calcRating.php';
-include 'include/printComments.php';
+include 'commentsRatings/printComments.php';
 $sessionId = session_id();
-$_SESSION['cartId'] = string_to_ascii($sessionId);//$sessionId;
+$_SESSION['cartId'] = $sessionId;// string_to_ascii($sessionId);//
 include 'include/timeOut.php';
 include 'include/errorMessage.php';
-
 
 
 ?>
@@ -58,9 +57,15 @@ include 'include/errorMessage.php';
 	else if(isset($_GET['p']) && $_GET['p']=='comment') include('commentsRatings/commentView.php');
 	else if(isset($_GET['p']) && $_GET['p']=='commentAdd') include('commentsRatings/commentAdd.php');
 	else if(isset($_GET['p']) && $_GET['p']=='comment_submit') include('commentsRatings/comment_submit.php');
+	else if(isset($_GET['p']) && $_GET['p']=='rate') include('commentsRatings/rate_submit.php');
 
 	/*** ADMIN ***/
 	else if(isset($_GET['p']) && $_GET['p']=='admin') include('admin/admin.php');
+	else if(isset($_GET['p']) && $_GET['p']=='update_product') include('admin/updateProduct.php');
+	else if(isset($_GET['p']) && $_GET['p']=='add_product') include('admin/addProduct.php');
+	else if(isset($_GET['p']) && $_GET['p']=='remove_product') include('admin/removeProduct.php');
+	else if(isset($_GET['p']) && $_GET['p']=='remove_comment') include('admin/removeComment.php');
+	else if(isset($_GET['p']) && $_GET['p']=='make_admin') include('admin/makeAdmin.php');
 
 	/** Defalt page **/
         else include ('siteLayout/content/bananas.php');

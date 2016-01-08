@@ -1,6 +1,5 @@
 <?php
 
-
 function avgRating($productId) {
 	include 'db_connect.php';
 	$sqlRatings = "SELECT rating FROM RATING where productId = {$productId}";

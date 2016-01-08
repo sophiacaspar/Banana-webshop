@@ -6,7 +6,7 @@ $cartId = $_SESSION['cartId'];
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
     // last request was more than 15 (1800s) minutes ago
 // Empty cart
-	$remove = "DELETE FROM CART WHERE cartId = ('{$cartId}')";
+	$remove = "DELETE FROM CART WHERE cartId = '{$cartId}'";
 	$emptyCart = mysql_query($remove, $link) or die(mysql_error());
 
     	session_unset();     // unset $_SESSION variable for the run-time 

@@ -3,7 +3,7 @@
 // Empty cart
 $cartId = $_SESSION['cartId'];
 
-$remove = "DELETE FROM CART WHERE cartId = ({$cartId})";
+$remove = "DELETE FROM CART WHERE cartId = '{$cartId}'";
 $emptyCart = mysql_query($remove, $link) or die(mysql_error());
 
 // Unset all of the session variables.

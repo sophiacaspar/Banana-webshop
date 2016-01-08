@@ -1,14 +1,11 @@
 <?php
 include 'db_connect.php';
+include 'commentsRatings/rate.php';
 // Fetch the products ordered by product ID
 $sql = "SELECT * FROM PRODUCT ORDER BY productId";
 $result = mysql_query($sql, $link) or die(mysql_error());
 
-// Fetch the maximum product ID
-$sql_maxIndex = "SELECT MAX(productId) FROM PRODUCT WHERE 1";
-$maxResult = mysql_query($sql_maxIndex, $link) or die(mysql_error());
-$maxIndexRow = mysql_fetch_array($maxResult);
-$maxIndex = $maxIndexRow['MAX(productId)'];
+$maxIndex = mysql_num_rows($result);
 
 
 ?>
@@ -46,22 +43,9 @@ for($i = 0; $i < $maxIndex; $i++){
 	</form><br>
 
 
-	<?php /** VIEW RATES **/
-	$avgRate = avgRating(mysql_result($result,$i,'productId'));
-	$roundRate = round($avgRate, 0, PHP_ROUND_HALF_UP);
-	$maxRate = 5;
-	$numRate = numRate(mysql_result($result,$i,'productId'));
-
-	for($j=0; $j<$roundRate; $j++){ ?>
-		<img class="rateFill" src="commentsRatings/monkey.png" alt="monkey">
-	<?php }
-
-	for($k=0; $k<($maxRate-$roundRate); $k++){ ?>
-	<img class="rateTotal" src="commentsRatings/monkey.png" alt="monkey">
-	<?php } 
-
-	echo "<br><small> [" . $avgRate . "/" . $maxRate . "] " . $numRate . " votes</small>";
-	?>
+	<?php 
+	/** Function from commentsRatings/, to show and make rate-monkeys clickable. **/
+	rate($result, $i); ?>
 
 	</div>
         

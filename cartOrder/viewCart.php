@@ -6,7 +6,7 @@ $join = "SELECT CART.cartId, CART.productId, PRODUCT.name, CART.quantity, PRODUC
 FROM CART 
 INNER JOIN PRODUCT
 ON CART.productId=PRODUCT.productId
-WHERE CART.cartId = ({$cartId})";
+WHERE CART.cartId = '{$cartId}'";
 
 $result = mysql_query($join, $link) or die(mysql_error());
 $totProd = 0;

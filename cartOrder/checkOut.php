@@ -1,7 +1,13 @@
 <?php 
 
+if(!$_SESSION['checkOut']==1)
+{
+	$page = $_SERVER['PHP_SELF'];
+	echo '<meta http-equiv="Refresh" content="0;' . $page . '">';
+
+} else {
 if(isLoggedIn()){ 
-	echo "<h2>CONTROL YOUR ORDER</h2>";
+	echo "<h2>CHECK YOUR ORDER</h2>";
 	include 'cartOrder/viewUser.php';
 	include 'cartOrder/viewCart.php';
 	include 'cartOrder/creditCard.php';
@@ -20,6 +26,6 @@ if(isLoggedIn()){
 else{
 	include 'loginUser/login.php';
 }
-
+}
 
 ?>

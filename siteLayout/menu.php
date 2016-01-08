@@ -2,7 +2,7 @@
 include 'db_connect.php';
 $cartId = $_SESSION['cartId'];
 // Count number of unique products in cart
-$sql = "SELECT count( DISTINCT(productId)) FROM CART WHERE cartId = ({$cartId})";
+$sql = "SELECT count( DISTINCT(productId)) FROM CART WHERE cartId = '{$cartId}'";
 $nrCart = mysql_query($sql, $link) or die(mysql_error());
 $nr = mysql_fetch_row($nrCart);
 

@@ -1,4 +1,10 @@
 <?php 
+if(isset( $_SESSION['userId'] ))
+{
+	$page = $_SERVER['PHP_SELF'];
+	echo '<meta http-equiv="Refresh" content="0;' . $page . '">';
+
+} else {
  ?>
 <h2>Login</h2>
 <form action="?p=login_submit" method="post">
@@ -28,5 +34,8 @@
 </table>
 </form>
 </fieldset>
+<?php
+}
+?>
 
 

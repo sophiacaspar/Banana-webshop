@@ -64,39 +64,7 @@ if (!(is_numeric($_POST['tfnNr'])))
 /*** Add error messages to msg session variable for printing ***/
 $_SESSION['msg']=$message;
 
-/*** first check that both the username, password and form token have been sent ***/
-/***if(!isset( $_POST['userName'], $_POST['password'], $_POST['form_token']))
-{
-    //$message = 'Please enter a valid username and password';
-}
-/*** check the form token is valid 
-elseif( $_POST['form_token'] != $_SESSION['form_token'])
-{
-    $message = 'Invalid form submission';
-}
-/*** check the username is the correct length 
-elseif (strlen( $_POST['userName']) > 20 || strlen($_POST['userName']) < 4)
-{
-    $message = 'Incorrect Length for Username';
-}
-/*** check the password is the correct length 
-elseif (strlen( $_POST['password']) > 20 || strlen($_POST['password']) < 4)
-{
-    $message = 'Incorrect Length for Password';
-}
-/*** check the username has only alpha numeric characters 
-elseif (ctype_alnum($_POST['userName']) != true)
-{
-    /*** if there is no match 
-    $message = "Username must be alpha numeric";
-}
-/*** check the password has only alpha numeric characters 
-elseif (ctype_alnum($_POST['password']) != true)
-{
-        /*** if there is no match 
-        $message = "Password must be alpha numeric";
-}
-***/
+
 if($fail == 0){
 	/*** if we are here the data is valid and we can insert it into database ***/
 	$userName = filter_var($_POST['userName'], FILTER_SANITIZE_STRING);
@@ -204,6 +172,7 @@ if($fail == 0){
 </script>
 <?php
 }
+
 ?>
 
 

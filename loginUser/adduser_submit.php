@@ -3,7 +3,12 @@
 include 'db_connect.php';
 $fail = 0;
 $message = "";
+if(isset( $_SESSION['userId'] ))
+{
+	$page = $_SERVER['PHP_SELF'];
+	echo '<meta http-equiv="Refresh" content="0;' . $page . '">';
 
+} else {
 
 /*** Error check against preset conditions on front end side ***/
 if(strlen($_POST['userName']) < 4){
@@ -139,7 +144,9 @@ if($fail == 0){
 	window.setTimeout('history.back();', 1); // waits 5 seconds before going back
 	</script>
 <?php
-}?>
+} 
+}
+?>
 
 
 

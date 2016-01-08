@@ -1,11 +1,17 @@
 <?php
 include 'db_connect.php';
+
+if(!isset( $_SESSION['userId'] ))
+{
+	$page = $_SERVER['PHP_SELF'];
+	echo '<meta http-equiv="Refresh" content="0;' . $page . '">';
+
+} else {
 $userId = $_SESSION['userId'];
 
 $sqlOrder = "SELECT orderId FROM `ORDER` WHERE userId = '{$userId}'";
 
 $resultOrder = mysql_query($sqlOrder, $link) or die(mysql_error());
-//$result = mysql_query($join, $link) or die(mysql_error());
 
 
 ?>
@@ -18,23 +24,28 @@ for($i=0;$i<mysql_num_rows($resultOrder);$i++){
 $totProd =0;
 $currentID = mysql_result($resultOrder,$i,'orderId');
 
-//I have no idea why this one produces orderNumber amounts of each row... Working on it.
-$joinInner = "SELECT `ORDER`.orderId, `ORDER`.orderTimeStamp, `ORDER`.totalPrice, ORDERINFO.quantity, ORDERINFO.price, PRODUCT.name, PRODUCT.productId
+$joinInner = "SELECT `ORDER`.orderId, `ORDER`.orderTimeStamp, `ORDER`.totalPrice, `ORDER`.shippingAddress, ORDERINFO.quantity, ORDERINFO.price, PRODUCT.name, PRODUCT.productId
 FROM ORDERINFO 
 INNER JOIN `ORDER`
 ON `ORDER`.userId = {$userId}
 INNER JOIN PRODUCT
 ON PRODUCT.productId=ORDERINFO.productId
 WHERE PRODUCT.productId=ORDERINFO.productId
-AND ORDERINFO.orderId = {$currentID}
-AND `ORDER`.orderId = {$currentID}
-AND `ORDER`.userId = {$userId} ";
+AND ORDERINFO.orderId = '{$currentID}'
+AND `ORDER`.orderId = '{$currentID}'
+AND `ORDER`.userId = {$userId} 
+ORDER BY `ORDER`.orderTimeStamp DESC ";
 $resultInner = mysql_query($joinInner, $link) or die(mysql_error());
 ?>
     	<table>
 	<tr>
-	<td colspan = "3"><b><i><ins>Order: <?php echo mysql_result($resultInner,0,'orderId'); ?> 
-  |  Date:  <?php echo mysql_result($resultInner,0,'orderTimeStamp'); ?></ins></i></b></td>
+	<td colspan ="3"><b><i><ins>Date:  <?php echo mysql_result($resultInner,0,'orderTimeStamp'); ?></ins></i></b></td>
+</tr>
+	<td colspan = "3"><b><i><ins><small>Order: <?php echo mysql_result($resultInner,0,'orderId'); ?> </small></ins></i></b></td>
+	</tr>
+	<tr>
+	<td colspan = "3" align="center"><i> <?php echo mysql_result($resultInner,0,'shippingAddress'); ?> 
+   </i></td>
 	</tr>
 	<tr>
 	<td><b>Product name</td>
@@ -52,13 +63,7 @@ $resultInner = mysql_query($joinInner, $link) or die(mysql_error());
 		<td><?php echo mysql_result($resultInner,$j,'name')?></td>
 		<td align="center"><?php echo mysql_result($resultInner,$j,'quantity')?></td>
 		<td align="center"><?php echo mysql_result($resultInner,$j,'price')?>€</td>
-		
-		<form action="?p=commentAdd" method="post">
-		<td>
-		<input type="hidden" name="prodId" value="<?php echo mysql_result($resultInner,$j,'productId')?>">
-		<input class="text" type="submit" value="Add comment">
-		</form>
-		</td>	
+			
 		</tr>
 		<?php  
 		$totProd = $totProd + mysql_result($resultInner,$j,'quantity');
@@ -76,4 +81,7 @@ $resultInner = mysql_query($joinInner, $link) or die(mysql_error());
 }
 ?>
 </table>
-</fieldset>   
+</fieldset> 
+<?php
+}
+?>  

@@ -114,6 +114,10 @@ ul#menu li a:hover {
     border-radius:4px 4px 4px 4px;
 }
 
+.button:hover {
+    background-color:orange;
+}
+
 .changeCart {
     width:25px;
     height: 25px;
@@ -121,6 +125,10 @@ ul#menu li a:hover {
     background-color:black;
     font-size: 15px;
     border-radius:4px 4px 4px 4px;
+}
+
+.changeCart:hover {
+    background-color:orange;
 }
 
 .removeFromCart {
@@ -132,14 +140,14 @@ ul#menu li a:hover {
     border-radius:4px 4px 4px 4px;
 }
 
-
-.button:hover {
+.removeFromCart:hover {
     background-color:orange;
 }
 
+
 .rateFill {
 	width:30px;
-	height:30px;	
+	height:30px;
 }
 
 .rateTotal {
@@ -148,6 +156,18 @@ ul#menu li a:hover {
 	opacity:0.4;
 	filter: alpha(opacity=40);
 }
+
+.comment table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.comment th, .comment td {
+    text-align: left;
+    padding: 8px;
+}
+
+.comment tr:nth-child(even){background-color: #FFFFFF}
 
 
 

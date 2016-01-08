@@ -7,11 +7,12 @@ $join = "SELECT CART.cartId, CART.productId, PRODUCT.name, CART.quantity, PRODUC
 FROM CART 
 INNER JOIN PRODUCT
 ON CART.productId=PRODUCT.productId
-WHERE CART.cartId = ({$cartId})";
+WHERE CART.cartId = '{$cartId}'";
 
 $result = mysql_query($join, $link) or die(mysql_error());
 $totProd = 0;
 $totPrice = 0;
+$_SESSION['checkOut'] = 0;
 
 ?>
    <br> 
@@ -76,7 +77,9 @@ $totPrice = 0;
 <br>
 
 <?php
-if (mysql_num_rows($result) > 0){ ?>
+if (mysql_num_rows($result) > 0){ 
+	$_SESSION['checkOut'] = 1;
+?>
 	<ul id="menu"> <li><a href="?p=checkOut">CHECK OUT CART</a></li>  </ul>
 <?php } ?>
 

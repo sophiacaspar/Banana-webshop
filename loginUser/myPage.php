@@ -1,8 +1,10 @@
 <?php
+if(!isset( $_SESSION['userId'] ))
+{
+	$page = $_SERVER['PHP_SELF'];
+	echo '<meta http-equiv="Refresh" content="0;' . $page . '">';
 
-/*** begin our session ***/
-
-
+} else {
 
 /*** set a form token ***/
 $form_token = md5( uniqid('auth', true) );
@@ -230,3 +232,6 @@ $(document).ready(function() {
 <input class="button" type="submit" value="Order History" />
 </form>
 
+<?php
+}
+?>
